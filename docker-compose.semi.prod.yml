@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     build:
-      context: ./app
+      context: ./bayatStream
       dockerfile: Dockerfile.semi.prod
     command: gunicorn bayatStream.wsgi:application --bind 0.0.0.0:8000
     volumes:
