@@ -4,9 +4,9 @@ import socket
 
 class ArvanStream:
     session = requests.Session()
-    session.headers.update({'Authorization': 'Apikey 1be0f6c1-2db9-4df6-8f0f-701ffab961e8'})
+    session.headers.update({'Authorization': 'Apikey 7ad7faa2-2376-43ac-afcd-4df0497a79f8'})
     base_url = 'https://napi.arvancloud.com/live/2.0/streams/'
-    stream_id = '7451021d-29b4-4e47-9344-cafdda924c42'
+    stream_id = 'e066b100-2948-47d3-b4a4-d0ff2c92c4c6'
 
     @staticmethod
     def get_real_ip_addr(request):
