@@ -23,9 +23,24 @@ class LoggedInType(DjangoObjectType):
         interfaces = (relay.Node,)
 
 
-class LogoutUser(graphene.Mutation):
+class CreateUser(graphene.Mutation):
     id = graphene.ID()
 
+    class Arguments:
+        username = graphene.String()
+        password = graphene.String()
+
+    @classmethod
+    def mutate(cls, root, info, username, password):
+        User = get_user_model()
+        user = User.objects.create_user(username)
+        user.set_password(password)
+        user.save()
+        return cls(id=user.id)
+
+
+class LogoutUser(graphene.Mutation):
+    id = graphene.ID()
 
     @classmethod
     def mutate(cls, root, info, **kwargs):
@@ -38,6 +53,7 @@ class LogoutUser(graphene.Mutation):
 
 class BayatMutation(graphene.ObjectType):
     logout_user = LogoutUser.Field()
+    create_user = CreateUser.Field()
 
 
 class BayatQuery(graphene.ObjectType):
