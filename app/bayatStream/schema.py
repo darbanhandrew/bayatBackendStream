@@ -10,9 +10,21 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+import graphene
+from rx import Observable
+
+
+class Subscription(graphene.ObjectType):
+    hello = graphene.String()
+
+    def resolve_hello(root, info):
+        return Observable.interval(1000 ) \
+            .map(lambda i: "hello world!")
+
 
 class ObtainJSONWebToken(graphql_jwt.JSONWebTokenMutation):
     user = graphene.Field(UserType)
+
     # ip = graphene.String()
     # session = graphene.String()
 
@@ -48,4 +60,4 @@ class Mutation(AuthMutation, BayatMutation, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query, mutation=Mutation)
+schema = graphene.Schema(query=Query, mutation=Mutation, subscription=Subscription)
