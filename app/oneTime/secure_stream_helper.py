@@ -6,7 +6,7 @@ class ArvanStream:
     session = requests.Session()
     session.headers.update({'Authorization': 'Apikey 7ad7faa2-2376-43ac-afcd-4df0497a79f8'})
     base_url = 'https://napi.arvancloud.com/live/2.0/streams/'
-    stream_id = 'e066b100-2948-47d3-b4a4-d0ff2c92c4c6'
+    stream_id = 'fe4e2c83-9fc9-4fcd-beed-cbb5df622e0d'
 
     @staticmethod
     def get_real_ip_addr(request):
