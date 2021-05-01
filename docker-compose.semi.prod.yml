@@ -35,6 +35,8 @@ services:
       - media_volume:/home/app/web/mediafiles
     ports:
       - 80:80
+    networks:
+      - djangonetwork
     depends_on:
       - web
 volumes:
