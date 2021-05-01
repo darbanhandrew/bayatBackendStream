@@ -22,6 +22,8 @@ services:
   db:
     image: postgres:12.0-alpine
     container_name: db
+    command:
+      -bash -c "chmod +x docker-entrypoint.sh"
     networks:
       - djangonetwork
     volumes:
